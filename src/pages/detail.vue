@@ -5,6 +5,7 @@
       <h1 @click="add">详情页面</h1>
       <h1>{{data}}</h1>
       <h1>{{newdata}}</h1>
+       <mt-button @click="todetail">story</mt-button>
     </div>
   </div>
 </template>
@@ -27,13 +28,17 @@ export default {
     }
   },
   methods: {
-    tohome() {
-      this.$router.goBack()
+    todetail() {
+     this.$router.togo('/Home/Detail/page1')
     },
     add() {
       this.data++
     }
-  }
+  },
+  activated() {
+    this.$router.isleft = true;
+    this.$router.isright = false;
+  },
 }
 </script>
 

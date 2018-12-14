@@ -1,8 +1,22 @@
 <template>
   <div id="app">
-    <transition :name="transitionName">
+    <!-- <transition :name="transitionName">
       <router-view class="Router"></router-view>
+    </transition> -->
+     <transition :name="transitionName">
+        <keep-alive>
+          <router-view  class="Router" v-if="$route.meta.keepAlive">
+              <!-- 这里是会被缓存的视图组件，比如 page1,page2 -->
+          </router-view>
+        </keep-alive>
     </transition>
+     <transition :name="transitionName">
+        <router-view  class="Router"  v-if="!$route.meta.keepAlive">
+        <!-- 这里是不被缓存的视图组件，比如 page3 -->
+        </router-view>
+     </transition>
+
+   
   </div>
 </template>
 
@@ -23,7 +37,7 @@ export default {
         this.transitionName = 'slideright'
       }
     }
-  }
+  },
 }
 </script>
 

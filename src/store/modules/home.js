@@ -6,7 +6,7 @@
 import * as types from '../mutation-type'  // 引入定义的方法
 const home = {
   state: {
-    number: 1
+    number: 1,    
   },
   mutations: {
     [types.SET_NUM](state, num) {   // 修改state 可通过mapMutations调用

@@ -13,7 +13,7 @@ Router.prototype.goRight = function (path) {
   this.isleft = false
   this.push(path)
 }
-// 需要返回按钮动画的路由用this.$router.goBack()，返回上一个路由
+// // 需要返回按钮动画的路由用this.$router.goBack()，返回上一个路由
 Router.prototype.goBack = function () {
   this.isright = true
   this.isleft = false
@@ -56,13 +56,24 @@ export default new Router({
           path: '/day',
           name: 'day',
           component: (resolve) => require(['@/pages/index/day'], resolve)
-        }
+        },
       ]
     },
     {
       path: '/Home/Detail',
       name: 'Detail',
-      component: (resolve) => require(['@/pages/detail'], resolve)
+      component: (resolve) => require(['@/pages/detail'], resolve),
+      meta: {
+        keepAlive: false, // 此组件不需要被缓存
+    }
+    },
+    {
+      path: '/Home/Detail/page1',
+      name: 'page1',
+      component: (resolve) => require(['@/pages/index/page1'], resolve),
+      meta: {
+        keepAlive: false, // 此组件不需要被缓存
+    }
     }
   ]
 })
